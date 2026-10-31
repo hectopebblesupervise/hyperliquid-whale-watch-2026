@@ -1,0 +1,74 @@
+<Window x:Class="HLWhaleWatch.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/microsoft.com/winfx/2006/xaml"
+        mc:Ignorable="d"
+        Title="Hyperliquid Whale Watch"
+        Height="600"
+        Width="900"
+        WindowStartupLocation="CenterScreen"
+        Background="#1e1e1e"
+        Foreground="#cccccc">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0"
+                   Text="Hyperliquid Whale Watch"
+                   FontSize="24"
+                   FontWeight="Bold"
+                   Foreground="#007acc"
+                   Margin="0,0,0,20"/>
+
+        <TabControl Grid.Row="1" Margin="0,0,0,16">
+            <TabItem Header="Whale Feed">
+                <StackPanel>
+                    <TextBlock Text="Large Positions" FontWeight="Bold" Foreground="#007acc" Margin="0,0,0,8"/>
+                    <ListBox x:Name="lstWhales" Height="300" Foreground="#cccccc"/>
+                    <Button x:Name="btnRefreshWhales" Content="Refresh Whales" Width="140" Height="32"
+                            Background="#007acc" Foreground="White" BorderThickness="0" Click="BtnRefreshWhales_Click"/>
+                </StackPanel>
+            </TabItem>
+
+            <TabItem Header="Wallet Tracker">
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,8">
+                        <TextBlock Text="Wallet Address:" Width="120" Foreground="#cccccc"/>
+                        <TextBox x:Name="txtWalletAddress" Width="260" Margin="0,0,8,0"/>
+                        <Button x:Name="btnAddWallet" Content="Add" Width="80" Height="32"
+                                Background="#007acc" Foreground="White" BorderThickness="0" Click="BtnAddWallet_Click"/>
+                    </StackPanel>
+                    <ListBox x:Name="lstWallets" Height="250" Foreground="#cccccc"/>
+                </StackPanel>
+            </TabItem>
+
+            <TabItem Header="Liquidation Radar">
+                <StackPanel>
+                    <TextBlock Text="Positions Close to Liquidation" FontWeight="Bold" Foreground="#007acc" Margin="0,0,0,8"/>
+                    <ListBox x:Name="lstLiquidations" Height="300" Foreground="#cccccc"/>
+                    <Button x:Name="btnRefreshLiq" Content="Refresh Radar" Width="140" Height="32"
+                            Background="#007acc" Foreground="White" BorderThickness="0" Click="BtnRefreshLiq_Click"/>
+                </StackPanel>
+            </TabItem>
+
+            <TabItem Header="Sentiment">
+                <StackPanel>
+                    <TextBlock Text="Long/Short Ratio" FontWeight="Bold" Foreground="#007acc" Margin="0,0,0,8"/>
+                    <ListBox x:Name="lstSentiment" Height="300" Foreground="#cccccc"/>
+                    <Button x:Name="btnRefreshSentiment" Content="Refresh Sentiment" Width="160" Height="32"
+                            Background="#007acc" Foreground="White" BorderThickness="0" Click="BtnRefreshSentiment_Click"/>
+                </StackPanel>
+            </TabItem>
+        </TabControl>
+
+        <StatusBar Grid.Row="2" Margin="0,20,0,0" Background="#2d2d2d" BorderThickness="0,1,0,0">
+            <StatusBarItem>
+                <TextBlock x:Name="txtStatus" Foreground="#888888" Text="Ready"/>
+            </StatusBarItem>
+        </StatusBar>
+    </Grid>
+</Window>
